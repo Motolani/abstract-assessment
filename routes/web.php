@@ -26,14 +26,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth']], function () {
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/user/{user}', [App\Http\Controllers\AdminController::class, 'activateUser'])->name('user.status.update');
+    Route::post('/user/update-user-status/{user}', [App\Http\Controllers\AdminController::class, 'updateStatus'])->name('user.status.updating');
 });
 
 //RandomUsers
 Route::group(['prefix' => 'user', 'middleware' => ['isActive', 'auth']], function () {
-    Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('users.dashboard');
+    Route::get('/active/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('users.dashboard');
 });
 
 //inactive users
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'inactive'])->name('users.inactive');
+    Route::get('/inactive/dashboard', [App\Http\Controllers\UserController::class, 'inactive'])->name('users.inactive');
 });

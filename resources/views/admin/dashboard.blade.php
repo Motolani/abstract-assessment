@@ -10,6 +10,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Day Registered</th>
                     <th scope="col">Activation Status</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +19,16 @@
                     <th scope="row">{{$otherUser->name}}</th>
                     <td>{{$otherUser->email}}</td>
                     <td>{{$otherUser->created_at}}</td>
-                    <td>{{$otherUser->is_active}}</td>
+                    <td>
+                        @if($otherUser->is_active == true)
+                            <option selected> Is Active</option>
+                            @else
+                                <option selected> Is Not Active</option>
+                        @endif
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-success" href="{{route('user.status.update', $otherUser->id)}}">Activate User</a>
+                    </td>
                 </tr>
                 @empty
                 <tr>

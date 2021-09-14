@@ -64,10 +64,12 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Admin ?') }}</label>
 
-                            <div class="col-md-6 form-check form-control ml-3" style="border:none">
-                                <input class="form-check-input " type="checkbox" value="1" id="flexCheckDefault" name="is_admin">
-                                {{-- <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"> --}}
-                            </div>
+                            <select class="form-select form-control col-md-6" aria-label="Default select example" name="is_admin">
+                                <option selected value="0">Open this select menu</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                            
                         </div>
 
                         <div class="form-group row mb-0">
